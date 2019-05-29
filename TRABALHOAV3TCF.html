@@ -1,0 +1,84 @@
+<body class="geral" >
+<link rel="stylesheet" href="Obra.css" />
+<center>
+
+<p style="font-family:Courier; color:White; font-size: 80px;"> Dados da Obra</p>
+<div class="div4">
+<p style="font-family:Courier; color:White; font-size: 25px;"> Utilizando tijolo cerâmico furado (9x19x19)cm </p>
+</div>
+</center>
+<h1><p style="font-family:Courier; color:Black; font-size: 30px;"> Quantidade de alvenaria em m²: <font color="White" > <a id="alvenaria" > </font> </a>
+<button class="css3button" id="B1" onclick="Capturar()"> Inserir </button> </p></h1>
+<h3 class="facilita"> <font color="#ff9900" > Materiais </font> </h3>
+<h3 class="facilita"> Quantidade de blocos cerâmicos(9x19x39): <font color="White" > <a id="tijolo1" > </a> </font> </h3>
+<h3 class="facilita"> Quantidade de cimento: <font color="White" > <a id="cimento1" > </a> </font> </h3>
+<h3 class="facilita"> Quantidade de areia: <font color="White" > <a id="areia1" > </a> </font> </h3>
+<h3 class="facilita"> Quantidade de Cal Hidratada: <font color="#ffffff" > <a id="cal1" > </a> </font> </h3>
+<h3 class="facilita"> Total de dinheiro gasto com material: <font color="#ffffff" > <a id="dinheiro1" > </a> </font> </h3>
+<h2 class="facilita"> <font color="#ff9900" > Mão de obra </font> </h2>
+<h3 class="facilita"> São necessários aproximadamente :
+	<font color="#ffffff" > <a id="pedreiros1" > 0 </a> </font> pedreiros e 
+	<font color="#ffffff" > <a id="serventes1" > 0 </a> </font> serventes para terminar 
+	<font color="#ffffff" ><a id="alvenaria1"> 0 </a> </font> m² de alvenaria em uma hora. </h3>
+<hr color="white">
+<h3 class="facilita"> Total de dinheiro gasto com mão de obra:  <font color="#ffffff" > <a id="dinheiroMB" > </a> </font> </h3>
+<hr color="white">
+<button class="css3button" onclick="DefinirHora1()"> Clique aqui para definir em quanto tempo você quer a alvenaria pronta. </button>
+<h3 class="facilita"> Números de pedreiros: <font color="#ffffff"> <a id="NumeroP"> Escolha a quantidade de horas. </a> </font> </h3>
+<h3 class="facilita"> Números de serventes: <font color="#ffffff"> <a id="NumeroS"> Escolha a quantidade de horas. </a> </font > </h3>
+<div class="div5">
+<button onclick class="btn"> <a href="TrabalhoAV3(2PARTE).html"> <p style="font-family:Courier; color:White; font-size: 20px;"> <- Voltar </p></a> </button>
+<button onclick class="btn"> <a href="TrabalhoAV3Entrada.html"> <p style="font-family:Courier; color:White; font-size: 20px;"> Pagina Inicial </p></a> </button>
+<div class="div6">
+<button onclick="Salvar()" class="btn"><p style="font-family:Courier; color:White; font-size: 20px;"> Salvar </p></a> </button>
+</div>
+</div>
+</body>
+<script>
+var alvenaria=0
+var pedreiro1=0
+var servente1=0
+var Salva=[]
+function Capturar() { 
+	alvenaria = parseFloat(prompt("Digite a quantidade de alvenaria em m²."))
+	document.getElementById("alvenaria").innerHTML=alvenaria
+	document.getElementById("B1").innerHTML="Modificar"
+	document.getElementById("NumeroP").innerHTML="Escolha a quantidade de horas."
+	document.getElementById("NumeroS").innerHTML="Escolha a quantidade de horas."
+	T1(1)
+	}
+function T1(QuantidadeHora) {
+	var QuantidadeT1= alvenaria*13
+	document.getElementById("tijolo1").innerHTML= QuantidadeT1 + " Blocos cerâmicos."
+	var QuantidadeC1= (alvenaria*1.84).toFixed(2)
+	document.getElementById("cimento1").innerHTML= QuantidadeC1 +" Kg de cimento portland."
+	var QuantidadeA1= (alvenaria*0.0083).toFixed(2)
+	document.getElementById("areia1").innerHTML= QuantidadeA1 +" m³ de areia media."
+	var QuantidadeCal1= (alvenaria*0.18).toFixed(2)
+	document.getElementById("cal1").innerHTML= QuantidadeCal1+" Kg de Cal Hidratada."
+	var Dinheiro1= alvenaria*19.147
+	document.getElementById("dinheiro1").innerHTML= "R$ " + Dinheiro1.toFixed(2)
+	servente1=(alvenaria*0.39).toFixed(0)
+	document.getElementById("serventes1").innerHTML= servente1
+	pedreiro1=(alvenaria*0.32).toFixed(0)
+	document.getElementById("pedreiros1").innerHTML= pedreiro1
+	document.getElementById("alvenaria1").innerHTML= alvenaria
+	var dinheiroMB=(alvenaria*12.1884).toFixed(2)
+	document.getElementById("dinheiroMB").innerHTML= "R$ " + dinheiroMB
+	var array=[QuantidadeT1,QuantidadeC1,QuantidadeA1,QuantidadeCal1,servente1,pedreiro1,alvenaria,dinheiroMB,Dinheiro1,pedreiro1/QuantidadeHora,servente1/QuantidadeHora]
+	Salva=array
+}
+function DefinirHora1() {
+	var QuantidadeHora= parseFloat(prompt("Digite a quantidade de tempo em HORAS que você quer levantar a parede."))
+	if (QuantidadeHora<1) {
+	alert("O tempo mínimo para levantar a parede é de uma hora, por favor colocar valores acima de 1.")
+	}
+	document.getElementById("NumeroP").innerHTML=(pedreiro1/QuantidadeHora).toFixed(0)
+	document.getElementById("NumeroS").innerHTML=(servente1/QuantidadeHora).toFixed(0)
+	T1(QuantidadeHora)
+}
+function Salvar() {
+	var nome=prompt("Digite um nome para salvar a obra.")
+	window.localStorage.setItem(nome,Salva)
+}
+</script>

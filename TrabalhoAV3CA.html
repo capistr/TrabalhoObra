@@ -1,0 +1,95 @@
+
+<body class="geral">
+<link rel="stylesheet" href="Obra.css" />
+<center>
+		<p style="font-family:Courier; color:White; font-size: 80px;"> Dados da Obra</p>
+
+	<div class="div4">
+		<p style="font-family:Courier; color:White; font-size: 25px;"> Utilizando Concreto Armado Eps. 12cm </p>
+	</div>
+</center>
+<h1><p style="font-family:Courier; color:Black; font-size: 30px;"> Quantidade de alvenaria em m²: <font color="White" > <a id="alvenaria" > </font> </a>
+<button id="B1" class="css3button" onclick="Capturar()"> Inserir </button> </h2>
+<h3 class="facilita"> <font color="#ff9900" > Materiais </font> </h3>
+<h3 class="facilita"> Quantidade de cimento: <font color="White" > <a id="cimento2" > </a> </font> </h3>
+<h3 class="facilita"> Quantidade de areia: <font color="White" > <a id="areia2" > </a> </font> </h3>
+<h3 class="facilita"> Quantidade de Brita:<font color="White" > <a id="brita"></a></font></h3>
+<h3 class="facilita"> Quantidade de Prego: <font color="White" ><a id="prego"></a></font></h3>
+<h3 class="facilita"> Tela soldada em aço CA-60 B:<font color="White" > <a id="solda"></a></font></h3>
+<h3 class="facilita"> Quantidade de Pontaleze / Barrote de 3x3: <font color="White" ><a id="pontalete"></a></font></h3>
+<h3 class="facilita">Chapa compensado resinado de (6mm x 1.10m x 2.20m):<font color="White" ><a id="chapa"></a></font></h3>
+<h3 class="facilita">Sarrafo de 1x4: <font color="White" ><a id="sarrafo"></a></font></h3>
+<h2 class="facilita"> <font color="#ff9900" > Mão de obra </font> </h2>
+<h3 class="facilita"> São necessários aproximadamente :
+	<font color="White" ><a id ="carpinteiro"> 0 </a></font> carpinteiros,
+	<font color="White" ><a id ="ajudantecarpinteiro"> 0 </a></font> ajudantes de carpinteiro,
+	<font color="White" > <a id="pedreiros2" > 0 </a> </font> pedreiros e 
+	<font color="White" > <a id="serventes2" > 0 </a> </font> serventes para terminar 
+	<font color="White" ><a id="alvenaria2"> 0 </a> </font> m² de alvenaria em uma hora. </h3>
+	<hr color="white">
+	<h3 class="facilita"> Total de dinheiro gasto com mão de obra:  <font color="#ffffff" > <a id="dinheiroMB" > </a> </font> </h3>
+	<hr color="white">
+	<button class="css3button" onclick="DefinirHora1()"> Clique aqui para definir em quanto tempo você quer a alvenaria pronta. </button>
+<h3 class="facilita"> Números de pedreiros: <font color="#ffffff"> <a id="NumeroP"> Escolha a quantidade de horas. </a> </font> </h3>
+<h3 class="facilita"> Números de serventes: <font color="#ffffff"> <a id="NumeroS"> Escolha a quantidade de horas. </a> </font 
+</h3>
+<h3 class="facilita"> Números de carpinteiro: <font color="#ffffff"> <a id="NumeroC"> Escolha a quantidade de horas. </a> </font </h3>
+<h3 class="facilita"> Números de ajudante de carpinteiro: <font color="#ffffff"> <a id="NumeroAC"> Escolha a quantidade de horas. </a> </font > </h3>
+<div class="div5">
+<button onclick class="btn"> <a href="TrabalhoAV3(2PARTE).html"> <p style="font-family:Courier; color:White; font-size: 20px;"> <- Voltar </p></a> </button>
+<button onclick class="btn"> <a href="TrabalhoAV3Entrada.html"> <p style="font-family:Courier; color:White; font-size: 20px;"> Pagina Inicial </p></a> </button>
+<div class="div6">
+<button onclick="Salvar()" class="btn"><p style="font-family:Courier; color:White; font-size: 20px;"> Salvar </p></a> </button>
+</body>
+<script>
+var alvenaria=0
+var serventes2=0
+var pedreiros2=0
+var carpinteiro=0
+var ajudanteC=0
+function Capturar() { 
+	alvenaria = parseFloat(prompt("Digite a quantidade de alvenaria em m²."))
+	document.getElementById("alvenaria").innerHTML=alvenaria
+	document.getElementById("B1").innerHTML="Modificar"
+	T2()
+	}
+function T2() {
+	var QuantidadeA2 = (alvenaria*0.07).toFixed(2)
+	document.getElementById("areia2").innerHTML= QuantidadeA2 + " m³ de areia grossa."
+	var QuantidadeB = (alvenaria*0.1).toFixed(2)
+	document.getElementById("brita").innerHTML= QuantidadeB + " m³ de brita."
+	var QuantidadeChapa = (alvenaria*2.05).toFixed(2)
+	document.getElementById("chapa").innerHTML= QuantidadeChapa + " m² de chapa."
+	var QuantidadeC2 = (alvenaria*49.52).toFixed(2)
+	document.getElementById("cimento2").innerHTML= QuantidadeC2 + " Kg de cimento portland."
+	var QuantidadeP = (alvenaria*2.7).toFixed(2)
+	document.getElementById("pontalete").innerHTML= QuantidadeP + " m² de Pontalete / Barrote."
+	var QuantidadePrego = (alvenaria*0.3).toFixed(2)
+	document.getElementById("prego").innerHTML= QuantidadePrego + " Kg de prego."
+	var QuantidadeSarrafo = (alvenaria*0.85).toFixed(2)
+	document.getElementById("sarrafo").innerHTML = QuantidadeSarrafo + " m de sarrafo."
+	var QuantidadeSolda = (alvenaria*2.05).toFixed(2)
+	document.getElementById("solda").innerHTML= QuantidadeSolda + " m² de Tela soldada em aço."
+		serventes2 = (alvenaria*1.2).toFixed(0)
+	document.getElementById("serventes2").innerHTML= serventes2
+		pedreiros2 = (alvenaria*0.37).toFixed(0)
+	document.getElementById("pedreiros2").innerHTML= pedreiros2
+		carpinteiro = (alvenaria*1.35).toFixed(0)
+	document.getElementById("carpinteiro").innerHTML= carpinteiro
+		ajudanteC = (alvenaria*1.35).toFixed(0)
+	document.getElementById("ajudantecarpinteiro").innerHTML= ajudanteC
+	document.getElementById("alvenaria2").innerHTML= alvenaria
+}
+
+function DefinirHora1() {
+	var QuantidadeHora= parseFloat(prompt("Digite a quantidade de tempo em HORAS que você quer levantar a parede."))
+	if (QuantidadeHora<1) {
+	alert("O tempo mínimo para levantar a parede é de uma hora, por favor colocar valores acima de 1.")
+	}
+	document.getElementById("NumeroP").innerHTML=(pedreiros2/QuantidadeHora).toFixed(0)
+	document.getElementById("NumeroS").innerHTML=(serventes2/QuantidadeHora).toFixed(0)
+	document.getElementById("NumeroAC").innerHTML=(ajudanteC/QuantidadeHora).toFixed(0)
+	document.getElementById("NumeroC").innerHTML=(carpinteiro/QuantidadeHora).toFixed(0)
+	T2(QuantidadeHora)
+}
+</script>
